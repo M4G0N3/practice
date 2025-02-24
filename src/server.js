@@ -6,11 +6,26 @@ import express from "express";
 
 import connectDB from "./database/data.js";
 
+const expressApp = express();
+
 dotenv.config({
   path: "./.env",
 });
 
-connectDB();
+connectDB()
+  .then(() => {
+    expressApp.on("error", (error) => {
+      console.log(`Error: ${error}`);
+      throw error;
+    });
+
+    expressApp.listen(process.env.PORT || 8000, () => {
+      console.log(`Server is running on port ${process.env.PORT || 8000}`);
+    });
+  })
+  .catch((error) => {
+    console.error("MDB Failed", error);
+  });
 
 // const port = process.env.PORT;
 // const expressApp = express();
