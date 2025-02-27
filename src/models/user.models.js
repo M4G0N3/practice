@@ -1,13 +1,13 @@
 import mongoose, { Schema } from "mongoose";
 import bcrypt from "bcrypt";
-import { jwt } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 
 const userSchema = new Schema(
   {
     username: {
       type: String,
       required: true,
-      uinique: true,
+      unique: true,
       lowercase: true,
       trim: true,
       index: true,
@@ -15,7 +15,7 @@ const userSchema = new Schema(
     email: {
       type: String,
       required: true,
-      uinique: true,
+      unique: true,
       lowercase: true,
       trim: true,
     },
@@ -34,7 +34,7 @@ const userSchema = new Schema(
     },
     watchHistory: [
       {
-        tyep: Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: "Video",
       },
     ],
@@ -44,7 +44,6 @@ const userSchema = new Schema(
     },
     refreshToken: {
       type: String,
-      required: true,
     },
   },
   { timestamps: true }

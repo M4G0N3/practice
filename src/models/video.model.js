@@ -1,15 +1,14 @@
 import mongoose, { Schema } from "mongoose";
 import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
-import bcrypt from "bcrypt"
 
 const videoSchema = new Schema(
   {
     videoFile: {
-      type: String,
+      type: String, //cloudinary url
       required: true,
     },
     thumbnail: {
-      type: String,
+      type: String, //cloudinary url
       required: true,
     },
     title: {
@@ -29,15 +28,17 @@ const videoSchema = new Schema(
       default: 0,
     },
     isPublished: {
-      type: String,
-      required: true,
+      type: Boolean,
+      default: true,
     },
     owner: {
       type: Schema.Types.ObjectId,
       ref: "User",
     },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+  }
 );
 
 videoSchema.plugin(mongooseAggregatePaginate);
