@@ -16,6 +16,7 @@ const uploadOnCLDNIARY = async (localFilePath) => {
     console.log("File is uploaded successfully", response.url);
   } catch (error) {
     fs.unlinkSync(localFilePath);
+    return null;
   }
 };
 
