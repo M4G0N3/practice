@@ -37,8 +37,8 @@ function App() {
   const copyPass = useCallback(copyFn, [password])
 
   function copyFn() {
-    passwordRef.current?.select()
-    //passwordRef.current?.setSelectionRange(0, 3)
+    passwordRef.currencyent?.select()
+    //passwordRef.currencyent?.setSelectionRange(0, 3)
     window.navigator.clipboard.writeText(password)
   }
 
